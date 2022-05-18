@@ -9,7 +9,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button button;
+    Button button,mailbtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Uri uri = Uri.parse("tel:+923001234567");
                 Intent intent = new Intent(Intent.ACTION_DIAL,uri);
+                startActivity(intent);
+            }
+        });
+        mailbtn = findViewById(R.id.mail);
+        mailbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                
+                intent.setType("*/");
+                intent.putExtra(Intent.EXTRA_EMAIL, "abubakardar608@gmail.com");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
                 startActivity(intent);
             }
         });
